@@ -90,7 +90,7 @@ const Products = () => {
   };
 
   const fetchCart = async (token) => {
-    console.log("fetch");
+    
     if (!token) return;
     else {
       try {
@@ -100,8 +100,7 @@ const Products = () => {
             Authorization: `Bearer ${token}`
           }
         });
-        //const cartItems2 = generateCartItemsFrom(response.data, product);
-        // setItems(cartItems2);
+       
         return response.data;
       } catch (e) {
         if (e.response && e.response.status === 400) {
@@ -120,22 +119,22 @@ const Products = () => {
   };
 
   const isItemInCart = (items, productId) => {
-    // console.log(items,productId)
+
     let arr = items.filter((item) => {
       return item._id === productId;
     });
-    //console.log(arr.length);
+   
     if (arr.length === 0) {
       return false;
     }
     if (arr[0]._id === productId) {
       return true;
     }
-    //return items.findIndex((item) => item.productId === productId) !== -1;
+    
   };
 
   useEffect(() => {
-    console.log("useEffect called");
+    
     async function onLoad() {
       let product1 = await performAPICall();
       let response = await fetchCart(token);
@@ -175,7 +174,7 @@ const Products = () => {
     }
 
     try {
-      console.log("posted");
+      
       const response = await axios.post(
         `${config.endpoint}/cart`,
         { productId: productId, qty: qty },
@@ -185,10 +184,10 @@ const Products = () => {
           }
         }
       );
-      console.log(response.data);
+      
 
       setItems(generateCartItemsFrom(response.data, products));
-      console.log("post", items);
+      
     } catch (e) {
       if (e.response) {
         enqueueSnackbar(e.response.data.message, { variant: "error" });
@@ -202,7 +201,7 @@ const Products = () => {
     }
   };
 
-  console.log("from products page", product, items);
+ 
 
   return (
     <div>
