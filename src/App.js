@@ -8,7 +8,7 @@ import theme from "./theme";
 import Thanks from "./components/Thanks";
 import Checkout from "./components/Checkout";
 export const config = {
-  endpoint: `https://raashish1601-qkart-backend.onrender.com/`
+  endpoint: `https://qkart-frontend-v1-aman.herokuapp.com/api/v1`
 };
 
 function App() {
